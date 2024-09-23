@@ -36,6 +36,11 @@ There's also [links](https://www.freecodecamp.com), and
         - That look like this.
 `;
 
+function handleLineBreaks(text) {
+  // Replace single carriage returns (\n) with <br>
+  return text.replace(/\n/g, "  \n"); // The double spaces + \n in markdown forces a line break
+}
+
 function App() {
   const [markdownText, setMarkdownText] = useState<string>(defaultMarkdown);
 
@@ -51,7 +56,7 @@ function App() {
             onChange={(e) => setMarkdownText(e.target.value)}
           ></textarea>
           <div id="preview">
-            <ReactMarkdown>{markdownText}</ReactMarkdown>
+            <ReactMarkdown>{handleLineBreaks(markdownText)}</ReactMarkdown>
           </div>
         </div>
       </div>
